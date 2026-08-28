@@ -1,0 +1,166 @@
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+
+  background: #ffffff;
+  color: #172033;
+
+  font-family:
+    "DM Sans",
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  font-size: 16px;
+  line-height: 1.5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-family:
+    "Plus Jakarta Sans",
+    "DM Sans",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  color: #172033;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   FORMS
+===================================================== */
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* =====================================================
+   IMAGES
+===================================================== */
+
+img,
+svg {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* =====================================================
+   SELECTION
+===================================================== */
+
+::selection {
+  background: rgba(40, 103, 183, 0.18);
+  color: #172033;
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f7fa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c8d0db;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aeb8c6;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
