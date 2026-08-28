@@ -405,23 +405,7 @@ function LandingPage() {
       </section>
 
 
-      {/* ================= FOOTER ================= */}
-
-      <footer className="landing-footer">
-
-        <div className="landing-container landing-footer-content">
-
-          <span>
-            © 2026 SkillIntel
-          </span>
-
-          <span>
-            Skill Intelligence &amp; Learning Platform
-          </span>
-
-        </div>
-
-      </footer>
+    
 
     </div>
   );

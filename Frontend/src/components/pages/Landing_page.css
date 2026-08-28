@@ -745,27 +745,7 @@
 }
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
 
-.landing-footer {
-  border-top: 1px solid #e6ebf1;
-}
-
-.landing-footer-content {
-  min-height: 75px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 20px;
-
-  color: #8992a0;
-
-  font-size: 11px;
-}
 
 
 /* =====================================================

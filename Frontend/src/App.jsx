@@ -1,7 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 import LandingPage from "./components/pages/LandingPage";
+import Register from "./components/pages/Register";
 
 import "./App.css";
 
@@ -11,7 +14,9 @@ function App() {
       <Navbar />
 
       <main className="app-main">
+
         <Routes>
+
           <Route
             path="/"
             element={
@@ -20,8 +25,16 @@ function App() {
               </div>
             }
           />
+
+          <Route
+            path="/register"
+            element={<Register />}
+          />
+          
         </Routes>
       </main>
+
+        <Footer />
     </div>
   );
 }
