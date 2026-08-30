@@ -33,7 +33,7 @@ function App() {
     try {
 
       const response = await fetch(
-        "http://localhost:3000/user/me",
+        "https://vidyasetu-backend-inhe.onrender.com/user/me",
         {
           method: "GET",
           credentials: "include",
@@ -97,7 +97,7 @@ function App() {
     try {
 
       const response = await fetch(
-        "http://localhost:3000/user/logout",
+        "https://vidyasetu-backend-inhe.onrender.com/user/logout",
         {
           method: "POST",
           credentials: "include",
