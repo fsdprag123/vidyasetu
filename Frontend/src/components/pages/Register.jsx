@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ArrowRight, BrainCircuit, Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Register.css";
 
 function Register() {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -25,67 +27,69 @@ function Register() {
     }));
   };
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  // Check password confirmation
-  if (formData.password !== formData.confirmPassword) {
-    alert("Passwords do not match.");
-    return;
-  }
-
-  // Check terms
-  if (!formData.terms) {
-    alert("Please accept the terms and conditions.");
-    return;
-  }
-
-  try {
-    const response = await fetch(
-      "http://localhost:3000/user/register",
-      {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          username: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message || "Registration failed.");
+    // Check password confirmation
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match.");
       return;
     }
 
-    console.log("Registration successful:", data);
+    // Check terms
+    if (!formData.terms) {
+      alert("Please accept the terms and conditions.");
+      return;
+    }
 
-    alert("Account created successfully!");
+    try {
+      const response = await fetch(
+        "http://localhost:3000/user/register",
+        {
+          method: "POST",
 
-    // Reset form after successful registration
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      terms: false,
-    });
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-  } catch (error) {
-    console.error("Registration error:", error);
+          body: JSON.stringify({
+            username: formData.name,
+            email: formData.email,
+            password: formData.password,
+          }),
+        }
+      );
 
-    alert(
-      "Unable to connect to the server. Please try again."
-    );
-  }
-};
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Registration failed.");
+        return;
+      }
+
+      console.log("Registration successful:", data);
+
+      navigate("/login");
+
+      // Reset form after successful registration
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        terms: false,
+      });
+
+      alert("Account created successfully!");
+
+    } catch (error) {
+      console.error("Registration error:", error);
+
+      alert(
+        "Unable to connect to the server. Please try again."
+      );
+    }
+  };
 
   return (
     <main className="register-page">
@@ -95,6 +99,7 @@ const handleSubmit = async (event) => {
         {/* ================= BRAND ================= */}
 
         <Link to="/" className="register-brand">
+
           <span className="register-brand-icon">
             <BrainCircuit size={20} />
           </span>
@@ -102,6 +107,7 @@ const handleSubmit = async (event) => {
           <span>
             Skill<span>Intel</span>
           </span>
+
         </Link>
 
 
@@ -201,7 +207,9 @@ const handleSubmit = async (event) => {
                   type="button"
                   className="password-toggle"
                   onClick={() =>
-                    setShowPassword((previous) => !previous)
+                    setShowPassword(
+                      (previous) => !previous
+                    )
                   }
                   aria-label={
                     showPassword
@@ -209,11 +217,13 @@ const handleSubmit = async (event) => {
                       : "Show password"
                   }
                 >
+
                   {showPassword ? (
                     <EyeOff size={18} />
                   ) : (
                     <Eye size={18} />
                   )}
+
                 </button>
 
               </div>
@@ -264,11 +274,13 @@ const handleSubmit = async (event) => {
                       : "Show password"
                   }
                 >
+
                   {showConfirmPassword ? (
                     <EyeOff size={18} />
                   ) : (
                     <Eye size={18} />
                   )}
+
                 </button>
 
               </div>
