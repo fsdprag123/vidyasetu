@@ -44,7 +44,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/user/register",
+        "https://vidyasetu-backend-inhe.onrender.com/user/register",
         {
           method: "POST",
 

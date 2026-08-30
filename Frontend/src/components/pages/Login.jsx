@@ -52,7 +52,7 @@ export default function Login({
 
     try {
       const response = await fetch(
-        "http://localhost:3000/user/login",
+        "https://vidyasetu-backend-inhe.onrender.com/user/login",
         {
           method: "POST",
 
