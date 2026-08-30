@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import LandingPage from "./components/pages/LandingPage";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
-
+import HomePage from "./components/pages/HomePage";
 
 function App() {
 
@@ -169,6 +169,13 @@ function App() {
             <Register/>
           }
         />
+
+        <Route
+        path="/home"
+        element={
+          <HomePage username={username} />
+        }
+      />
 
       </Routes>
 
