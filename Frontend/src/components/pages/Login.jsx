@@ -111,6 +111,7 @@ const handleSubmit = async (e) => {
     alert(
       "Unable to connect to the server. Check the browser console."
     );
+    navigate("/");
   } finally {
     setLoading(false);
   }
