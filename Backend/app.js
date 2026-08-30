@@ -20,7 +20,7 @@ const port = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "https://vidyasetufrontend.netlify.app/",
+    origin: "https://vidyasetufrontend.netlify.app",
     credentials: true,
   })
 );
