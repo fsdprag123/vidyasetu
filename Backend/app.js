@@ -30,10 +30,8 @@ app.use(
 // BODY PARSER
 // ==========================================
 
-// For JSON requests from fetch()
 app.use(express.json());
 
-// For normal HTML form POST requests
 app.use(
   express.urlencoded({
     extended: true,
@@ -55,8 +53,13 @@ app.use(
 
     cookie: {
       httpOnly: true,
-      secure: false,
+
+      // HTTPS deployment
+      secure: true,
+
+      // Allow frontend and backend on different sites
       sameSite: "none",
+
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   })
@@ -96,7 +99,6 @@ app.get("/", (req, res) => {
 
 const connectDB = async () => {
   try {
-
     const MONGODB_URI = process.env.MONGODB_URI;
 
     if (!MONGODB_URI) {
@@ -108,7 +110,6 @@ const connectDB = async () => {
     console.log("Connected to MongoDB");
 
   } catch (error) {
-
     console.error(
       "MongoDB connection error:",
       error.message
@@ -130,7 +131,7 @@ const startServer = async () => {
   app.listen(port, () => {
 
     console.log(
-      `Server is running on http://localhost:${port}`
+      `Server is running on port ${port}`
     );
 
   });
