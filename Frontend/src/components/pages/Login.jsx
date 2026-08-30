@@ -104,14 +104,14 @@ const handleSubmit = async (e) => {
 
     setShowPassword(false);
 
-    navigate("/");
+    navigate("/home");
   } catch (error) {
     console.error("Login error:", error);
 
     alert(
       "Unable to connect to the server. Check the browser console."
     );
-    navigate("/home");
+    navigate("/login");
   } finally {
     setLoading(false);
   }
