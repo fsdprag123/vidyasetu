@@ -45,81 +45,76 @@ export default function Login({
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setLoading(true);
+  setLoading(true);
+
+  try {
+    const response = await fetch(
+      "https://vidyasetu-backend-inhe.onrender.com/user/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      }
+    );
+
+    // Get response as text first
+    const text = await response.text();
+
+    console.log("Status:", response.status);
+    console.log("Response:", text);
+
+    let data;
 
     try {
-      const response = await fetch(
-        "https://vidyasetu-backend-inhe.onrender.com/user/login",
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          credentials: "include",
-
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(
-          data.message || "Invalid email or password"
-        );
-
-        return;
-      }
-
-      // ==============================
-      // Login successful
-      // ==============================
-
-      setIsLogin(true);
-
-      setUsername(data.user.name);
-
-      setEmail(data.user.email);
-
-      // Reset form
-
-      setFormData({
-        email: "",
-        password: "",
-        remember: false,
-      });
-
-      setShowPassword(false);
-
-      // Go to home page
-
-      navigate("/");
-
-    } catch (error) {
-
-      console.error(
-        "Login error:",
-        error
-      );
-
-      alert(
-        "Unable to connect to the server."
-      );
-
-    } finally {
-
-      setLoading(false);
-
+      data = JSON.parse(text);
+    } catch {
+      alert("Backend returned an invalid response.");
+      return;
     }
-  };
+
+    if (!response.ok) {
+      alert(data.message || "Invalid email or password");
+      return;
+    }
+
+    // ==============================
+    // LOGIN SUCCESS
+    // ==============================
+
+    console.log("Login successful:", data);
+
+    setIsLogin(true);
+    setUsername(data.user.name);
+    setEmail(data.user.email);
+
+    setFormData({
+      email: "",
+      password: "",
+      remember: false,
+    });
+
+    setShowPassword(false);
+
+    navigate("/");
+  } catch (error) {
+    console.error("Login error:", error);
+
+    alert(
+      "Unable to connect to the server. Check the browser console."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="login-container">
