@@ -50,9 +50,12 @@ function Navbar({
 
       <div className="nav-links">
 
-        <a href="/#platform">
-          Platform
-        </a>
+        <Link
+              to="/home"
+              className="login-link"
+            >
+              home
+        </Link>        
 
         <a href="/#foundation">
           Foundation

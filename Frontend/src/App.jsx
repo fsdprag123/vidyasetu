@@ -114,6 +114,7 @@ function App() {
         setEmail(null);
 
       }
+      navigate("/");
 
     } catch (error) {
 
